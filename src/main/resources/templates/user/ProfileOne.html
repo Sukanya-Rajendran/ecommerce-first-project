@@ -1,0 +1,1140 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    &lt;!&ndash; Include any necessary meta tags, stylesheets, and scripts here &ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<style>-->
+<!--    * {-->
+<!--    box-sizing: border-box;-->
+<!--}-->
+
+<!--body {-->
+<!--    background-color: #f6f7fb;-->
+<!--    color: #888da8;-->
+<!--    letter-spacing: 0.2px;-->
+<!--    font-family: 'Roboto', sans-serif;-->
+<!--    padding: 0;-->
+<!--    margin: 0;-->
+<!--}-->
+
+<!--a,-->
+<!--p,-->
+<!--span,-->
+<!--div,-->
+<!--li,-->
+<!--td {-->
+<!--    font-weight: 300!important;-->
+<!--}-->
+
+<!--::placeholder {-->
+<!--    color: #ccc !important;-->
+<!--    font-weight: 300;-->
+<!--}-->
+
+<!--:-ms-input-placeholder {-->
+<!--    /* Internet Explorer 10-11 */-->
+<!--    color: #ccc !important;-->
+<!--    font-weight: 300;-->
+<!--}-->
+
+<!--::-ms-input-placeholder {-->
+<!--    /* Microsoft Edge */-->
+<!--    color: #ccc !important;-->
+<!--    font-weight: 300;-->
+<!--}-->
+
+<!--input {-->
+<!--    border-color: #d8e0e5;-->
+<!--    border-radius: 2px !important;-->
+<!--    box-shadow: none !important;-->
+<!--    font-weight: 300 !important;-->
+<!--}-->
+
+<!--.form-control:disabled,-->
+<!--.form-control[readonly] {-->
+<!--    background-color: #f6f7fb;-->
+<!--}-->
+
+<!--button.btn {-->
+<!--    border-radius: 2px !important;-->
+<!--    box-shadow: none !important;-->
+<!--}-->
+
+<!--button.btn.btn-primary {-->
+<!--    background-color: #0e9aee !important;-->
+<!--}-->
+
+<!--button.btn.btn-primary:hover {-->
+<!--    background-color: #0879c8 !important;-->
+<!--}-->
+
+<!--#left-menu {-->
+<!--    position: fixed;-->
+<!--    top: 0;-->
+<!--    left: 0;-->
+<!--    width: 280px;-->
+<!--    background-color: #313644;-->
+<!--    overflow-y: auto;-->
+<!--    height: 100vh;-->
+<!--    border-right: 1px solid #e6ecf5;-->
+<!--    margin-top: 60px;-->
+<!--    -webkit-transition: all 0.3s ease-in-out;-->
+<!--    -o-transition: all 0.3s ease-in-out;-->
+<!--    transition: all 0.3s ease-in-out;-->
+<!--    overflow-x: hidden;-->
+<!--    z-index: 2;-->
+<!--}-->
+
+<!--#left-menu.small-left-menu,-->
+<!--#logo.small-left-menu {-->
+<!--    width: 60px;-->
+<!--}-->
+
+<!--#left-menu ul {-->
+<!--    padding: 0;-->
+<!--    margin: 0;-->
+<!--}-->
+
+<!--#left-menu ul li {-->
+<!--    padding: 0 10px;-->
+<!--    display: block;-->
+<!--    position: relative;-->
+<!--}-->
+
+<!--#left-menu > ul > li {-->
+<!--    margin: 15px 0;-->
+<!--}-->
+
+<!--#left-menu ul li a {-->
+<!--    color: #99abb4;-->
+<!--    width: 100%;-->
+<!--    display: inline-block;-->
+<!--    width: 260px;-->
+<!--    height: 37px;-->
+<!--    position: relative;-->
+<!--}-->
+
+
+<!--#left-menu ul li a i {-->
+<!--    font-size: 22px;-->
+<!--    text-align: center;-->
+<!--    width: 35px;-->
+<!--    height: 35px;-->
+<!--    display: inline-block;-->
+<!--    -webkit-transition: all 0.3s ease;-->
+<!--    -o-transition: all 0.3s ease;-->
+<!--    transition: all 0.3s ease;-->
+<!--}-->
+<!--#left-menu ul li:hover a span{-->
+<!--    color: #0e9aee;-->
+<!--}-->
+<!--#left-menu ul li:hover a i{-->
+<!--    color: #0e9aee;-->
+<!--}-->
+
+<!--#left-menu ul li a span {-->
+<!--    width: 100%;-->
+<!--    height: 35px;-->
+<!--    padding-left: 10px;-->
+<!--    color: #99abb4;-->
+<!--    font-weight: 300;-->
+<!--    -webkit-transition: all 0.3s ease;-->
+<!--    -o-transition: all 0.3s ease;-->
+<!--    transition: all 0.3s ease;-->
+<!--}-->
+
+<!--#left-menu ul li.active a {-->
+<!--    border-bottom: 2px solid #0e9aee;-->
+<!--}-->
+
+<!--#left-menu ul li.active a span {-->
+<!--    color: #fff;-->
+<!--}-->
+
+<!--#left-menu ul li.active a i {-->
+<!--    background-color: #0e9aee;-->
+<!--    color: #fff;-->
+<!--}-->
+
+
+<!--#left-menu li.has-sub ul {-->
+<!--    background-color: #454e62;-->
+<!--    margin: 0 -10px;-->
+<!--    padding-left: 45px;-->
+<!--    height: 0;-->
+<!--    overflow: hidden;-->
+<!--    -webkit-transition: all 0.3s ease;-->
+<!--    -o-transition: all 0.3s ease;-->
+<!--    transition: all 0.3s ease;-->
+<!--}-->
+
+<!--#left-menu li ul.open {-->
+<!--/*    height: 140px;*/-->
+<!--}-->
+
+<!--#left-menu li.has-sub ul > li {-->
+<!--    padding-top: 10px;-->
+<!--}-->
+
+<!--a:hover {-->
+<!--    text-decoration: none;-->
+<!--}-->
+
+<!--#logo {-->
+<!--    position: fixed;-->
+<!--    top: 0;-->
+<!--    z-index: 2;-->
+<!--    left: 0;-->
+<!--    background-color: #464e62;-->
+<!--    border-color: #464e62;-->
+<!--    height: 60px;-->
+<!--    width: 280px;-->
+<!--    font-size: 30px;-->
+<!--    line-height: 2em;-->
+<!--    border-right: 1px solid #e6ecf5;-->
+<!--    z-index: 4;-->
+<!--    color: #fff;-->
+<!--    padding-left: 15px;-->
+<!--    -webkit-transition: all 0.3s ease-in-out;-->
+<!--    -o-transition: all 0.3s ease-in-out;-->
+<!--    transition: all 0.3s ease-in-out;-->
+<!--    overflow: hidden;-->
+<!--}-->
+
+
+<!--#header {-->
+<!--    background-color: #fff;-->
+<!--    height: 60px;-->
+<!--    border-bottom: 1px solid #e6ecf5;-->
+<!--    position: fixed;-->
+<!--    top: 0;-->
+<!--    width: 100%;-->
+<!--    z-index: 3;-->
+<!--}-->
+
+<!--#header .header-left {-->
+<!--    padding-left: 300px;-->
+<!--    -webkit-transition: all 0.3s ease-in-out;-->
+<!--    -o-transition: all 0.3s ease-in-out;-->
+<!--    transition: all 0.3s ease-in-out;-->
+<!--}-->
+
+<!--#header .header-right {-->
+<!--    padding-right: 40px;-->
+<!--}-->
+
+<!--#header .header-right i,-->
+<!--#header .header-left i {-->
+<!--    font-size: 30px;-->
+<!--    line-height: 2em;-->
+<!--    padding: 0 5px;-->
+<!--    cursor: pointer;-->
+<!--}-->
+
+<!--#main-content {-->
+<!--    min-height: calc(100vh - 60px);-->
+<!--    clear: both;-->
+<!--}-->
+
+<!--#page-container {-->
+<!--    padding-left: 300px;-->
+<!--    padding-top: 80px;-->
+<!--    padding-right: 25px;-->
+<!--    -webkit-transition: all 0.3s ease-in-out;-->
+<!--    -o-transition: all 0.3s ease-in-out;-->
+<!--    transition: all 0.3s ease-in-out;-->
+<!--}-->
+
+<!--#page-container.small-left-menu,-->
+<!--#header .header-left.small-left-menu {-->
+<!--    padding-left: 80px;-->
+<!--}-->
+
+<!--.card {-->
+<!--    border: 1px solid #e6ecf5;-->
+<!--    margin-bottom: 1em;-->
+<!--    font-weight: 300;-->
+<!--}-->
+
+<!--.card .title {-->
+<!--    padding: 15px 20px;-->
+<!--    border-bottom: 1px solid #e6ecf5;-->
+<!--    margin-bottom: 10px;-->
+<!--    color: #000;-->
+<!--    font-size: 18px;-->
+<!--}-->
+
+<!--#show-lable {-->
+<!--    opacity: 0;-->
+<!--    visibility: hidden;-->
+<!--    left: 80px;-->
+<!--    font-weight: 300;-->
+<!--    padding: 6px 15px;-->
+<!--    background-color: #0e9aee;-->
+<!--    position: fixed;-->
+<!--    color: #fff;-->
+<!--    -webkit-transition: all 0.3s ease-in-out;-->
+<!--    -o-transition: all 0.3s ease-in-out;-->
+<!--    transition: all 0.3s ease-in-out;-->
+<!--}-->
+
+<!--#left-menu.small-left-menu li.has-sub::after{-->
+<!--    content: '';-->
+<!--}-->
+<!--#left-menu.small-left-menu li.has-sub ul{-->
+<!--    position: fixed;-->
+<!--    width: 280px;-->
+<!--    z-index: 123;-->
+<!--    height: 0;-->
+<!--    left: 69px;-->
+<!--    padding-left: 15px;-->
+<!--}-->
+
+<!--@media only screen and (max-width: 992px) {-->
+<!--    #left-menu,-->
+<!--    #logo {-->
+<!--        width: 60px;-->
+<!--    }-->
+
+<!--    #page-container,-->
+<!--    #header .header-left {-->
+<!--        padding-left: 80px;-->
+<!--    }-->
+
+<!--    #toggle-left-menu,.big-logo{-->
+<!--        display: none;-->
+<!--    }-->
+<!--/*-->
+<!--    #logo{-->
+<!--        padding: 0;-->
+<!--        padding-left: 3px;-->
+<!--    }-->
+<!--    .small-logo{-->
+<!--        display: block;-->
+<!--    }-->
+<!--*/-->
+
+<!--}-->
+
+<!--@media only screen and (min-width: 992px) {-->
+<!--    #left-menu li.has-sub::after {-->
+<!--        font-family: "Ionicons";-->
+<!--        content: "\f3d3";-->
+<!--        position: absolute;-->
+<!--        top: 10px;-->
+<!--        right: 10px;-->
+<!--        cursor: pointer;-->
+<!--        transform: rotate(0deg);-->
+<!--        -webkit-transition: all 0.3s ease;-->
+<!--        -o-transition: all 0.3s ease;-->
+<!--        transition: all 0.3s ease;-->
+<!--    }-->
+<!--    #left-menu li.has-sub.rotate:after {-->
+<!--        -webkit-transform: rotate(90deg);-->
+<!--        -ms-transform: rotate(90deg);-->
+<!--        -o-transform: rotate(90deg);-->
+<!--        transform: rotate(90deg);-->
+<!--    }-->
+<!--    .small-logo{-->
+<!--        display: none;-->
+<!--    }-->
+
+<!--}-->
+<!--</style>-->
+<!--<div id="logo">-->
+<!--    <span class="big-logo">.UserInformation</span>-->
+<!--    <span class="small-logo">S!M</span>-->
+<!--</div>-->
+<!--<div id="left-menu">-->
+<!--    <ul>-->
+<!--        <li class="active"><a href="#">-->
+<!--            <i class="ion-ios-person-outline"></i>-->
+<!--            <span>User Profile</span>-->
+<!--        </a></li>-->
+<!--        <li class="active"><a href="#">-->
+<!--            <i class="ion-ios-person-outline"></i>-->
+<!--            <span>Change Password</span>-->
+<!--        </a></li>-->
+<!--        <li class="active"><a href="/user/address/add">-->
+<!--            <i class="ion-ios-person-outline"></i>-->
+<!--            <span> Add Address</span>-->
+<!--        </a></li>-->
+<!--        <li class="active"><a href="#">-->
+<!--            <i class="ion-ios-person-outline"></i>-->
+<!--            <span> Show  Address</span>-->
+<!--        </a></li>-->
+<!--        </li>-->
+<!--&lt;!&ndash;        <li> <a th:href="@{/profile}"><span class="flaticon-user"></span></a></li>&ndash;&gt;-->
+<!--        <li> <a th:href="@{/profile}"><span class="flaticon-user"></span></a></li>-->
+<!--        <li class="active"><a href="#">-->
+<!--            <i class="ion-ios-person-outline"></i>-->
+<!--            <span>Edit Address</span>-->
+<!--        </a></li>-->
+<!--        &lt;!&ndash; Rest of your menu items (omitted for brevity) &ndash;&gt;-->
+<!--    </ul>-->
+<!--</div>-->
+<!--<div id="main-content">-->
+<!--    <div id="header">-->
+<!--        <div class="header-left float-left">-->
+<!--            <i id="toggle-left-menu" class="ion-android-menu"></i>-->
+<!--        </div>-->
+<!--        <div class="header-right float-right">-->
+<!--            <i class="ion-ios-people"></i>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div id="page-container">-->
+<!--        &lt;!&ndash; Your card elements (omitted for brevity) &ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<span id="show-lable" th:text="Hello"></span>-->
+<!--<script>-->
+<!--    $('#toggle-left-menu').click(function() {-->
+<!--        if ($('#left-menu').hasClass('small-left-menu')) {-->
+<!--            $('#left-menu').removeClass('small-left-menu');-->
+<!--        } else {-->
+<!--            $('#left-menu').addClass('small-left-menu');-->
+<!--        }-->
+<!--        $('#logo').toggleClass('small-left-menu');-->
+<!--        $('#page-container').toggleClass('small-left-menu');-->
+<!--        $('#header .header-left').toggleClass('small-left-menu');-->
+
+<!--        $('#logo .big-logo').toggle('300');-->
+<!--        $('#logo .small-logo').toggle('300');-->
+<!--        $('#logo').toggleClass('p-0 pl-1');-->
+<!--    });-->
+
+<!--    $(document).on('mouseover', '#left-menu.small-left-menu > ul > li', function() {-->
+<!--        if (!$(this).hasClass('has-sub')) {-->
+<!--            var label = $(this).find('span').text();-->
+<!--            var position = $(this).position();-->
+<!--            $('#show-lable').css({-->
+<!--                'top': position.top + 79,-->
+<!--                'left': position.left + 59,-->
+<!--                'opacity': 1,-->
+<!--                'visibility': 'visible'-->
+<!--            });-->
+
+<!--            $('#show-lable').text(label);-->
+<!--        } else {-->
+<!--            var position = $(this).position();-->
+<!--            $(this).find('ul').addClass('open');-->
+
+<!--            if ($(this).find('ul').hasClass('open')) {-->
+<!--                const height = 47;-->
+<!--                var count_submenu_li = $(this).find('ul > li').length;-->
+<!--                if (position.top >= 580) {-->
+<!--                    var style = {-->
+<!--                        'top': (position.top + 100) - (height * count_submenu_li),-->
+<!--                        'height': height * count_submenu_li + 'px'-->
+<!--                    }-->
+<!--                    $(this).find('ul.open').css(style);-->
+<!--                } else {-->
+<!--                    var style = {-->
+<!--                        'top': position.top + 79,-->
+<!--                        'height': height * count_submenu_li + 'px'-->
+<!--                    }-->
+
+<!--                    $(this).find('ul.open').css(style);-->
+<!--                }-->
+
+<!--            }-->
+<!--        }-->
+
+<!--    });-->
+
+<!--    $(document).on('mouseout', '#left-menu.small-left-menu li a', function(e) {-->
+<!--        $('#show-lable').css({-->
+<!--            'opacity': 0,-->
+<!--            'visibility': 'hidden'-->
+<!--        });-->
+<!--    });-->
+
+<!--    $(document).on('mouseout', '#left-menu.small-left-menu li.has-sub', function(e) {-->
+<!--        $(this).find('ul').css({-->
+<!--            'height': 0,-->
+<!--        });-->
+<!--    });-->
+
+<!--    $(window).resize(function() {-->
+<!--        windowResize();-->
+<!--    });-->
+
+<!--    $(window).on('load', function() {-->
+<!--        windowResize();-->
+<!--    });-->
+
+<!--    $('#left-menu li.has-sub > a').click(function() {-->
+<!--        var _this = $(this).parent();-->
+
+<!--        _this.find('ul').toggleClass('open');-->
+<!--        $(this).closest('li').toggleClass('rotate');-->
+
+<!--        _this.closest('#left-menu').find('.open').not(_this.find('ul')).removeClass('open');-->
+<!--        _this.closest('#left-menu').find('.rotate').not($(this).closest('li')).removeClass('rotate');-->
+<!--        _this.closest('#left-menu').find('ul').css('height', 0);-->
+
+<!--        if (_this.find('ul').hasClass('open')) {-->
+<!--            const height = 47;-->
+<!--            var count_submenu_li = _this.find('ul > li').length;-->
+<!--            _this.find('ul').css('height', height * count_submenu_li + 'px');-->
+<!--        }-->
+<!--    });-->
+
+
+<!--    function windowResize() {-->
+<!--        var width = $(window).width();-->
+<!--        if (width <= 992) {-->
+<!--            $('#left-menu').addClass('small-left-menu');-->
+<!--            $('#logo').addClass('small-left-menu p-0 pl-1');-->
+<!--        } else {-->
+<!--            $('#left-menu').removeClass('small-left-menu');-->
+<!--            $('#logo').removeClass('small-left-menu p-0 pl-1');-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--second one-->
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>User Dashboard</title>-->
+<!--    &lt;!&ndash; Include any necessary meta tags, stylesheets, and scripts here &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">-->
+<!--    <style>-->
+<!--        /* Add your custom CSS styles here */-->
+
+<!--        /* Reset CSS */-->
+<!--        * {-->
+<!--            box-sizing: border-box;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        /* Body styles */-->
+<!--        body {-->
+<!--            font-family: 'Roboto', sans-serif;-->
+<!--            background-color: #f6f7fb;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        /* Header styles */-->
+<!--        #header {-->
+<!--            background-color: #0e9aee;-->
+<!--            color: #fff;-->
+<!--            height: 60px;-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            padding: 0 20px;-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--            width: 100%;-->
+<!--            z-index: 3;-->
+<!--        }-->
+
+<!--        #header h1 {-->
+<!--            font-size: 24px;-->
+<!--            margin-right: auto;-->
+<!--        }-->
+
+<!--        #header .header-right i,-->
+<!--        #header .header-left i {-->
+<!--            font-size: 30px;-->
+<!--            line-height: 2em;-->
+<!--            padding: 0 10px;-->
+<!--            cursor: pointer;-->
+<!--            transition: color 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #header .header-right i:hover,-->
+<!--        #header .header-left i:hover {-->
+<!--            color: #0879c8;-->
+<!--        }-->
+
+<!--        /* Logo styles */-->
+<!--        #logo {-->
+<!--            background-color: #464e62;-->
+<!--            color: #fff;-->
+<!--            height: 60px;-->
+<!--            width: 280px;-->
+<!--            font-size: 30px;-->
+<!--            line-height: 60px;-->
+<!--            border-right: 1px solid #e6ecf5;-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--            z-index: 4;-->
+<!--            overflow: hidden;-->
+<!--            transition: all 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #logo .big-logo {-->
+<!--            display: inline-block;-->
+<!--            transition: opacity 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #logo .small-logo {-->
+<!--            display: none;-->
+<!--            transition: opacity 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        /* Left Menu styles */-->
+<!--        #left-menu {-->
+<!--            background-color: #313644;-->
+<!--            width: 280px;-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--            height: 100vh;-->
+<!--            overflow-y: auto;-->
+<!--            border-right: 1px solid #e6ecf5;-->
+<!--            margin-top: 60px;-->
+<!--            z-index: 2;-->
+<!--            transition: all 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #left-menu.small-left-menu,-->
+<!--        #logo.small-left-menu {-->
+<!--            width: 60px;-->
+<!--        }-->
+
+<!--        #left-menu ul {-->
+<!--            list-style: none;-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        #left-menu ul li {-->
+<!--            position: relative;-->
+<!--            padding: 0 20px;-->
+<!--            margin: 15px 0;-->
+<!--        }-->
+
+<!--        #left-menu ul li a {-->
+<!--            color: #99abb4;-->
+<!--            display: block;-->
+<!--            padding: 10px 0;-->
+<!--            text-decoration: none;-->
+<!--            transition: color 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #left-menu ul li a i {-->
+<!--            font-size: 22px;-->
+<!--            margin-right: 10px;-->
+<!--            transition: color 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #left-menu ul li:hover a {-->
+<!--            color: #0e9aee;-->
+<!--        }-->
+
+<!--        #left-menu ul li:hover a i {-->
+<!--            color: #0e9aee;-->
+<!--        }-->
+
+<!--        #left-menu ul li.active a {-->
+<!--            border-left: 4px solid #0e9aee;-->
+<!--            background-color: #313644;-->
+<!--            color: #0e9aee;-->
+<!--        }-->
+
+<!--        /* Show Label styles */-->
+<!--        #show-label {-->
+<!--            background-color: #0e9aee;-->
+<!--            color: #fff;-->
+<!--            position: fixed;-->
+<!--            padding: 6px 15px;-->
+<!--            font-weight: 300;-->
+<!--            border-radius: 4px;-->
+<!--            opacity: 0;-->
+<!--            visibility: hidden;-->
+<!--            transition: all 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        /* Page Container styles */-->
+<!--        #page-container {-->
+<!--            padding-left: 300px;-->
+<!--            padding-top: 80px;-->
+<!--            padding-right: 25px;-->
+<!--            transition: all 0.3s ease-in-out;-->
+<!--        }-->
+
+<!--        #page-container.small-left-menu,-->
+<!--        #header .header-left.small-left-menu {-->
+<!--            padding-left: 80px;-->
+<!--        }-->
+
+<!--        /* Card styles */-->
+<!--        .card {-->
+<!--            border: 1px solid #e6ecf5;-->
+<!--            margin-bottom: 1em;-->
+<!--            font-weight: 300;-->
+<!--        }-->
+
+<!--        .card .title {-->
+<!--            padding: 15px 20px;-->
+<!--            border-bottom: 1px solid #e6ecf5;-->
+<!--            margin-bottom: 10px;-->
+<!--            color: #000;-->
+<!--            font-size: 18px;-->
+<!--        }-->
+
+<!--        /* Media Queries */-->
+<!--        @media only screen and (max-width: 992px) {-->
+<!--            #left-menu,-->
+<!--            #logo {-->
+<!--                width: 60px;-->
+<!--            }-->
+
+<!--            #page-container,-->
+<!--            #header .header-left {-->
+<!--                padding-left: 80px;-->
+<!--            }-->
+
+<!--            #toggle-left-menu, .big-logo {-->
+<!--                display: none;-->
+<!--            }-->
+
+<!--            #logo {-->
+<!--                padding: 0;-->
+<!--                padding-left: 3px;-->
+<!--            }-->
+
+<!--            .small-logo {-->
+<!--                display: block;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @media only screen and (min-width: 992px) {-->
+<!--            #left-menu li.has-sub::after {-->
+<!--                font-family: "FontAwesome";-->
+<!--                content: "\f054";-->
+<!--                position: absolute;-->
+<!--                top: 50%;-->
+<!--                right: 20px;-->
+<!--                transform: translateY(-50%);-->
+<!--                cursor: pointer;-->
+<!--                transition: transform 0.3s ease-in-out;-->
+<!--            }-->
+
+<!--            #left-menu li.has-sub.rotate::after {-->
+<!--                transform: translateY(-50%) rotate(90deg);-->
+<!--            }-->
+
+<!--            .small-logo {-->
+<!--                display: none;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="header">-->
+<!--    <i id="toggle-left-menu" class="fas fa-bars"></i>-->
+<!--    <h1>User Dashboard</h1>-->
+<!--    <div class="header-right">-->
+<!--        <i class="fas fa-user"></i>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div id="logo">-->
+<!--    <span class="big-logo">User Information</span>-->
+<!--    <span class="small-logo">S!M</span>-->
+<!--</div>-->
+<!--<div id="left-menu">-->
+<!--    <ul>-->
+<!--        <li class="active">-->
+<!--            <a href="#">-->
+<!--                <i class="fas fa-user"></i>-->
+<!--                <span>User Profile</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="active">-->
+<!--            <a href="#">-->
+<!--                <i class="fas fa-key"></i>-->
+<!--                <span>Change Password</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="active">-->
+<!--            <a href="/user/address/add">-->
+<!--                <i class="fas fa-map-marker-alt"></i>-->
+<!--                <span>Add Address</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="active">-->
+<!--            <a href="#">-->
+<!--                <i class="fas fa-map-marker-alt"></i>-->
+<!--                <span>Show Address</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a th:href="@{/profile}">-->
+<!--                <i class="fas fa-user"></i>-->
+<!--                <span>Edit Address</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        &lt;!&ndash; Rest of your menu items (omitted for brevity) &ndash;&gt;-->
+<!--    </ul>-->
+<!--</div>-->
+<!--<div id="main-content">-->
+<!--    &lt;!&ndash; Your card elements (omitted for brevity) &ndash;&gt;-->
+<!--</div>-->
+<!--<span id="show-label" th:text="Hello"></span>-->
+<!--<script>-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <!-- Include any necessary meta tags, stylesheets, and scripts here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Add your custom CSS styles here */
+
+        /* Reset CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Body styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f3f9; /* Updated background color */
+            color: #333;
+        }
+
+        /* Header styles */
+        #header {
+            background-color: #0879c8; /* Updated header background color */
+            color: #fff;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 3;
+        }
+
+        #header h1 {
+            font-size: 24px;
+            margin-right: auto;
+        }
+
+        #header .header-right i,
+        #header .header-left i {
+            font-size: 30px;
+            line-height: 2em;
+            padding: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #header .header-right i:hover,
+        #header .header-left i:hover {
+            color: #0e9aee; /* Updated hover color */
+        }
+
+        /* Logo styles */
+        #logo {
+            background-color: #313644;
+            color: #fff;
+            height: 60px;
+            width: 280px;
+            font-size: 30px;
+            line-height: 60px;
+            border-right: 1px solid #e6ecf5;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 4;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #logo .big-logo {
+            display: inline-block;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #logo .small-logo {
+            display: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Left Menu styles */
+        #left-menu {
+            background-color: #0e9aee; /* Updated left menu background color */
+            width: 280px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #e6ecf5;
+            margin-top: 60px;
+            z-index: 2;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #left-menu.small-left-menu,
+        #logo.small-left-menu {
+            width: 60px;
+        }
+
+        #left-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #left-menu ul li {
+            position: relative;
+            padding: 0 20px;
+            margin: 15px 0;
+        }
+
+        #left-menu ul li a {
+            color: #fff; /* Updated text color */
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #left-menu ul li a i {
+            font-size: 22px;
+            margin-right: 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #left-menu ul li:hover a {
+            color: #f0f3f9; /* Updated hover text color */
+        }
+
+        #left-menu ul li:hover a i {
+            color: #f0f3f9; /* Updated hover icon color */
+        }
+
+        #left-menu ul li.active a {
+            border-left: 4px solid #fff; /* Updated active border color */
+            background-color: #0879c8; /* Updated active background color */
+            color: #fff; /* Updated active text color */
+        }
+
+        /* Show Label styles */
+        #show-label {
+            background-color: #0e9aee;
+            color: #fff;
+            position: fixed;
+            padding: 6px 15px;
+            font-weight: 300;
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Page Container styles */
+        #page-container {
+            padding-left: 300px;
+            padding-top: 80px;
+            padding-right: 25px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #page-container.small-left-menu,
+        #header .header-left.small-left-menu {
+            padding-left: 80px;
+        }
+
+        /* Card styles */
+        .card {
+            border: 1px solid #e6ecf5;
+            margin-bottom: 1em;
+            font-weight: 300;
+        }
+
+        .card .title {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e6ecf5;
+            margin-bottom: 10px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        /* Media Queries */
+        @media only screen and (max-width: 992px) {
+            #left-menu,
+            #logo {
+                width: 60px;
+            }
+
+            #page-container,
+            #header .header-left {
+                padding-left: 80px;
+            }
+
+            #toggle-left-menu, .big-logo {
+                display: none;
+            }
+
+            #logo {
+                padding: 0;
+                padding-left: 3px;
+            }
+
+            .small-logo {
+                display: block;
+            }
+        }
+
+        @media only screen and (min-width: 992px) {
+            #left-menu li.has-sub::after {
+                font-family: "FontAwesome";
+                content: "\f054";
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                cursor: pointer;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            #left-menu li.has-sub.rotate::after {
+                transform: translateY(-50%) rotate(90deg);
+            }
+
+            .small-logo {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <i id="toggle-left-menu" class="fas fa-bars"></i>
+    <h1>User Dashboard</h1>
+    <div class="header-right">
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-user"></i>
+        <i class="fas fa-sign-out-alt fa-sm " ></i>
+    </div>
+    <div class="header-left">
+        <a th:href="@{'/'}">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+</div>
+<div id="left-menu">
+    <div id="logo">
+        <div class="big-logo">Dashboard</div>
+        <div class="small-logo">D</div>
+    </div>
+    <ul>
+        <li class="active">
+            <a href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-chart-pie"></i>
+                Charts
+            </a>
+        </li>
+        <li class="has-sub">
+            <a href="#">
+                <i class="fas fa-cogs"></i>
+                Settings
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-users"></i>
+                Users
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/profile/details}">
+                <i class="fas fa-user"></i>
+              <span>Profile</span>
+            </a>
+        </li>
+
+        <li>
+            <a th:href="@{/user/address/add}">
+                <i class="fas fa-user"></i>
+               <span> Add Address</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/user/address/edit}">
+                <i class="fas fa-user"></i>
+                <span> Edit Address</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<li>
+    <!--            <a th:href="@{/profile}">-->
+    <!--                <i class="fas fa-user"></i>-->
+    <!--                <span>Edit Address</span>-->
+    <!--            </a>-->
+
+<!--<div id="page-container">-->
+<!--    <div class="card">-->
+<!--        <div class="title">Dashboard</div>-->
+<!--        &lt;!&ndash; Add your content here &ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<div id="show-label">Show Menu</div>
+<script>
+    const toggleLeftMenu = document.getElementById('toggle-left-menu');
+    const leftMenu = document.getElementById('left-menu');
+    const logo = document.getElementById('logo');
+    const pageContainer = document.getElementById('page-container');
+    const showLabel = document.getElementById('show-label');
+    const headerLeft = document.querySelector('#header .header-left');
+
+    toggleLeftMenu.addEventListener('click', () => {
+        leftMenu.classList.toggle('small-left-menu');
+        logo.classList.toggle('small-left-menu');
+        pageContainer.classList.toggle('small-left-menu');
+        showLabel.classList.toggle('active');
+        headerLeft.classList.toggle('small-left-menu');
+    });
+
+    showLabel.addEventListener('click', () => {
+        leftMenu.classList.toggle('small-left-menu');
+        logo.classList.toggle('small-left-menu');
+        pageContainer.classList.toggle('small-left-menu');
+        showLabel.classList.toggle('active');
+        headerLeft.classList.toggle('small-left-menu');
+    });
+
+    // Add your JavaScript logic here
+
+</script>
+</body>
+</html>
+

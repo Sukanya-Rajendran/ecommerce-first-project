@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin.css}" />
+</head>
+
+<body>
+
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="/ass"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/product">Products</a></li>
+        <li class="write"><a href="/admin/category">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage/manageUser">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>Admin DashBoard</h2>
+        <ul>
+            <a href="/admin/category">Information Panel</a>
+        </ul>
+    </section>
+    <a  th:href="@{/admin/category/showaddcategory}" type="button" class="btn btn-primary">
+        <button> Add Category  </button></a>
+    <section class="panel important">
+        <div class="container mt-3">
+            <form class="form-inline" th:action="@{/admin/category/searchCategories}" method="get">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" class="form-control" id="name" name="name" th:value="*{name}" required placeholder="Enter category name here">
+                </div>
+                <button type="submit" class="btn btn-primary btn-success mb-2">Search</button>
+            </form>
+        </div>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope ="col" >No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Use th:each to iterate over the list of categories -->
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td th:text="${category.description}"> </td>
+                <td>
+                    <a th:href="@{/admin/category/toggle-list/{id}(id=${category.id})}" class="btn btn-sm category-toggle-btn"
+                       th:classappend="${!category.isAvailable} ? 'btn-danger' : 'btn-success'"
+                       onclick="return confirm('Are you sure')">
+<!--                        <span th:if="${category.isAvailable}">Make Unavailable</span>-->
+<!--                        <span th:unless="${category.isAvailable}">Make Available</span>-->
+<!--                    </a>-->
+                    <div class="btn-group" role="group" aria-label="Availability">
+                        <button th:if="${category.isAvailable}" type="button" class="btn btn-danger">
+                            <span th:if="${category.isAvailable}">Make Unavailable</span>
+                        </button>
+                        <button th:unless="${category.isAvailable}" type="button" class="btn btn-success">
+                            <span th:unless="${category.isAvailable}">Make Available</span>
+                        </button>
+                    </div>
+                    </a>
+
+
+                </td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

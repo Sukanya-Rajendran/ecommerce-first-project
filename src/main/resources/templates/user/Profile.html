@@ -1,0 +1,343 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>User Details</title>-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            font-family: 'Lato', sans-serif;-->
+<!--            background-image: linear-gradient(to right, #f43b47, #453a94);-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            min-height: 100vh;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            background-color: #fff;-->
+<!--            padding: 20px;-->
+<!--            border-radius: 5px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-->
+<!--            width: 80%;-->
+<!--            max-width: 400px;-->
+<!--        }-->
+
+<!--        .header {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .header h1 {-->
+<!--            font-size: 2.5rem;-->
+<!--        }-->
+
+<!--        .form-group {-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .form-group label {-->
+<!--            font-size: 1.2rem;-->
+<!--            font-weight: bold;-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .form-group input[type="text"] {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            font-size: 1rem;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 3px;-->
+<!--        }-->
+
+<!--        .user-details {-->
+<!--            margin-top: 20px;-->
+<!--            padding: 10px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 3px;-->
+<!--        }-->
+
+<!--        .user-details h2 {-->
+<!--            font-size: 1.5rem;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .address {-->
+<!--            list-style: none;-->
+<!--            padding-left: 0;-->
+<!--        }-->
+
+<!--        .address li {-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .footer {-->
+<!--            text-align: center;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .footer a {-->
+<!--            text-decoration: none;-->
+<!--            color: #453a94;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .inner-circle {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: rgba(255, 255, 255, 0.2);-->
+<!--            border-radius: 50%;-->
+<!--            position: absolute;-->
+<!--        }-->
+
+<!--        .c1 {-->
+<!--            top: -50px;-->
+<!--            left: 20px;-->
+<!--        }-->
+
+<!--        .c2 {-->
+<!--            top: -50px;-->
+<!--            right: 20px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="header">-->
+<!--        <h1>User Details</h1>-->
+<!--        <p>View User Information</p>-->
+<!--    </div>-->
+
+<!--    <div class="form-body">-->
+<!--        <form>-->
+<!--            <p>-->
+<!--                <label for="firstName">First Name:</label>-->
+<!--                <input type="text" id="firstName" name="firstName" th:value="${user.firstName}" readonly>-->
+<!--            </p>-->
+
+<!--            <p>-->
+<!--                <label for="lastName">Last Name:</label>-->
+<!--                <input type="text" id="lastName" name="lastName" th:value="${user.lastName}" readonly>-->
+<!--            </p>-->
+
+<!--            <p>-->
+<!--                <label for="email">Email:</label>-->
+<!--                <input type="text" id="email" name="email" th:value="${user.email}" readonly>-->
+<!--            </p>-->
+
+<!--            ,-->
+
+<!--            &lt;!&ndash; Add more user details as needed &ndash;&gt;-->
+<!--        </form>-->
+
+<!--    </div>-->
+<!--    <h2>Addresses</h2>-->
+<!--    <ul>-->
+<!--        <li th:each="add : ${address}">-->
+<!--            <p>Flat: <span th:text="${add.flat}"></span></p>-->
+<!--            <p>Area: <span th:text="${add.area}"></span></p>-->
+<!--            <p>Town: <span th:text="${add.town}"></span></p>-->
+<!--            <p>City: <span th:text="${add.city}"></span></p>-->
+<!--            <p>State: <span th:text="${add.state}"></span></p>-->
+<!--            <p>Pin: <span th:text="${add.pin}"></span></p>-->
+<!--            <p>Landmark: <span th:text="${add.landmark}"></span></p>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <div class="form-footer">-->
+<!--        <p><a href="/profile">Back to Home</a></p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="inner-circle c1"></div>-->
+<!--<div class="inner-circle c2"></div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-image: linear-gradient(to right, #f43b47, #453a94);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .user-details {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .user-details h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .address {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .address li {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #453a94;
+            font-weight: bold;
+        }
+
+        .edit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #453a94;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .inner-circle {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .c1 {
+            top: -50px;
+            left: 20px;
+        }
+
+        .c2 {
+            top: -50px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="outer-body">
+    <div class="inner-body">
+
+        <div class="form-header">
+            <h1>User Details</h1>
+            <p>View User Information</p>
+        </div>
+
+        <div class="form-body">
+            <form>
+                <p>
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" th:value="${user.firstName}" readonly>
+                </p>
+
+                <p>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" th:value="${user.lastName}" readonly>
+                </p>
+
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" th:value="${user.email}" readonly>
+                </p>
+
+                ,
+
+                <!-- Add more user details as needed -->
+            </form>
+
+        </div>
+        <h2>Addresses</h2>
+        <ul>
+            <li th:each="add : ${address}">
+                <p>Flat: <span th:text="${add.flat}"></span></p>
+                <p>Area: <span th:text="${add.area}"></span></p>
+                <p>Town: <span th:text="${add.town}"></span></p>
+                <p>City: <span th:text="${add.city}"></span></p>
+                <p>State: <span th:text="${add.state}"></span></p>
+                <p>Pin: <span th:text="${add.pin}"></span></p>
+                <p>Landmark: <span th:text="${add.landmark}"></span></p>
+                <a class="edit-button" th:href="@{/user/address/update/{id}(id=${add.id})}">Edit</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p><a th:href="@{/profile}">Back to Home</a></p>
+    </div>
+</div>
+    </div>
+<div class="inner-circle c1"></div>
+<div class="inner-circle c2"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin.css}" />
+</head>
+
+<body>
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/product">Products</a></li>
+        <li class="write"><a th:href="@{/admin/category}">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage/manageUser">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>Admin Dashboard</h2>
+        <p>This dashboard is designed to help you manage your eCommerce application efficiently. You can access various features and tools from the navigation menu to oversee and control different aspects of your online store.</p>
+    </section>
+
+    <section class="panel important">
+        <p>Welcome to the Admin Dashboard for your eCommerce application. This powerful tool provides you with essential features for efficient management:</p>
+        <ul>
+            <li><strong>Product Management</strong>: Easily add, update, and manage your product listings.</li>
+            <li><strong>User Management</strong>: Handle user accounts and permissions with ease.</li>
+            <li><strong>Inventory Management</strong>: Keep track of your product inventory effortlessly.</li>
+            <li><strong>Category Management</strong>: Organize your products into categories for better navigation.</li>
+        </ul>
+        <p>With these features, you can ensure the smooth operation of your online business and provide excellent service to your customers.</p>
+    </section>
+
+
+
+
+</main>
+
+</body>
+
+</html>

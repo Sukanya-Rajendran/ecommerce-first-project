@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/user/user.css}" />
+    <style>
+        .add-user-button {
+            float: left; /* Float the button to the left */
+            margin-left: 40px;
+        }
+        .user-table {
+            clear: left; /* Clear the float to ensure proper layout */
+        }
+        .button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Ensure full cell height is used */
+}
+.btn-toggle {
+    width: 150px; /* Set the desired fixed width */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 5px; /* Add some spacing between buttons */
+    text-align: center; /* Center the text within the button */
+    display: block;
+}
+
+.btn-toggle-admin {
+    background-color: #28a745; /* Green background color for admin button */
+    color: #fff; /* White text color */
+}
+
+.btn-toggle-user {
+    background-color: #007bff; /* Blue background color for user button */
+    color: #fff; /* White text color */
+}
+
+.btn-toggle-block {
+    background-color: #dc3545; /* Red background color for block/unblock button */
+    color: #fff; /* White text color */
+}
+
+.btn-toggle:hover {
+    opacity: 0.8; /* Reduce opacity on hover for all buttons */
+}
+
+
+    </style>
+</head>
+
+<body>
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/product">Products</a></li>
+        <li class="write"><a href="/admin/category">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage/manageUser">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>User Management - Change Admin Settings</h2>
+    </section>
+
+    <section class="panel important">
+        <div id="loggedInUserId" data-user-id="${loggedInUserId}"></div>
+        <div class="user-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- User data will be dynamically populated here using Thymeleaf -->
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.blocked ? 'BLOCKED' : 'ACTIVE'}"></td>
+                    <td th:text="${user.roles[0].name == 'ROLE_ADMIN' ? 'ADMIN' : 'USER'}"></td>
+                    <td>
+                        <!-- Check if the user is not the currently logged-in user -->
+                        <th:block th:unless="${user.id == loggedInUserId}">
+                            <form th:action="@{/admin/manage/toggleAdmin/{id}(id=${user.id})}" method="post">
+                                <button type="submit" class="btn btn-toggle btn-toggle-admin" th:if="${user.roles[0].name == 'ROLE_USER'}">Make as Admin</button>
+                                <button type="submit" class="btn btn-toggle btn-toggle-user" th:if="${user.roles[0].name == 'ROLE_ADMIN'}">Make as User</button>
+                            </form>
+                            <form th:action="@{/admin/manage/toggleBlockUser/{id}(id=${user.id})}" method="post">
+                                <button type="submit" class="btn btn-toggle btn-toggle-block" th:if="${user.blocked}">Unblock User</button>
+                                <button type="submit" class="btn btn-toggle btn-toggle-block" th:unless="${user.blocked}">Block User</button>
+                            </form>
+                        </th:block>
+                    </td>
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+</body>
+
+</html>

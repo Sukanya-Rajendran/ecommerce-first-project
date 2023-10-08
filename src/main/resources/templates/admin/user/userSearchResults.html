@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/user/user.css}" />
+    <style>
+        .add-user-button {
+            float: left; /* Float the button to the left */
+            margin-left: 40px;
+        }
+        .user-table {
+            clear: left; /* Clear the float to ensure proper layout */
+        }
+ /* Add styles for the search form */
+.search-form {
+    float: left;
+    margin-right: 20px; /* Add spacing between the search form and user table */
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+/* Style for the search form elements */
+.search-form .form-group {
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically within the form group */
+}
+
+/* Style for the search button */
+.search-form button {
+    margin-left: 10px; /* Add spacing between the input field and the button */
+}
+
+
+    </style>
+</head>
+
+<body>
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/product">Products</a></li>
+        <li class="write"><a href="/admin/category">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage/manageUser">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>User Management - List User</h2>
+    </section>
+
+    <section class="panel important">
+        <div class="search-form">
+            <form th:action="@{/admin/manage/search}" method="get" class="form-inline">
+                <div class="form-group">
+                    <select class="form-control" id="searchType" name="queryType">
+                        <option value="firstName">First Name</option>
+                        <option value="lastName">Last Name</option>
+                        <option value="email">Email</option>
+                    </select>
+                    <input type="text" class="form-control" id="searchField" name="queryWord" placeholder="Search">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="user-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- User data will be dynamically populated here using JavaScript -->
+                <tr th:each="user : ${listSearchUsers}">
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.blocked ? 'Blocked' : 'Active'}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<!--&lt;!&ndash; JavaScript code for fetching and populating user data &ndash;&gt;-->
+<!--<script th:inline="javascript">-->
+<!--    fetch('/admin/manage/listAllUsers')-->
+<!--        .then(response => response.json())-->
+<!--        .then(data => {-->
+<!--            const userTableBody = document.querySelector('.user-table tbody');-->
+
+<!--            data.forEach(user => {-->
+<!--                const row = document.createElement('tr');-->
+<!--                const status = user.blocked  ? 'Blocked' : 'Active';-->
+<!--                row.innerHTML = `-->
+<!--                    <td>${user.firstName}</td>-->
+<!--                    <td>${user.lastName}</td>-->
+<!--                    <td>${user.email}</td>-->
+<!--                    <td>${status}</td>-->
+<!--                `;-->
+<!--                userTableBody.appendChild(row);-->
+<!--            });-->
+<!--        });-->
+<!--</script>-->
+
+</body>
+
+</html>

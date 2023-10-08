@@ -1,0 +1,231 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>OTP Verification</title>-->
+<!--    <style>-->
+<!--		.commonbody {-->
+
+<!--			font-family: Arial, sans-serif;-->
+<!--			border: 1px solid #ccc;-->
+<!--			display: flex;-->
+<!--			flex-direction: column;-->
+<!--			align-items: center;-->
+<!--			justify-content: center;-->
+<!--			height: 70vh;-->
+<!--			width: auto;-->
+<!--			margin: 0;-->
+<!--			gap: 10px;-->
+<!--		}-->
+
+
+
+
+
+
+<!--		#maintext {-->
+<!--			font-size: 30px;-->
+<!--			color: #333;-->
+<!--		}-->
+
+<!--		#subtext {-->
+<!--			color: #777;-->
+
+<!--		}-->
+
+<!--		.input {-->
+<!--			padding: 10px;-->
+
+<!--			width: 100%;-->
+<!--			border: 1px solid #ccc;-->
+<!--			border-radius: 25px;-->
+
+<!--		}-->
+
+<!--		#button {-->
+<!--			background-color: #007bff;-->
+<!--			border: none;-->
+<!--			border-radius: 14PX;-->
+<!--			color: #fff;-->
+<!--			cursor: pointer;-->
+<!--			padding: 10px 10px;-->
+<!--			margin-top: 10px;-->
+<!--			width: 50%;-->
+<!--			margin-right: 20px;-->
+
+
+
+
+
+<!--		}-->
+
+<!--		#button:hover {-->
+<!--			color: black;-->
+<!--			background-color: #90e0ef;-->
+<!--			transition: 0.55s;-->
+
+<!--		}-->
+
+<!--		#resultMessage {-->
+<!--			color: #ff6b6b;-->
+<!--			margin-top: 10px;-->
+<!--		}-->
+<!--		.message{-->
+<!--			text-transform: lowercase;-->
+<!--			font-size: 15px;-->
+<!--			font-family: sans-serif;-->
+<!--		}-->
+<!--	</style>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="container maindiv">-->
+<!--    <div class="commonbody">-->
+<!--        <h1 id="maintext">OTP Verification</h1>-->
+<!--        <p id="subtext">Please enter the OTP sent to your email </p>-->
+
+
+
+<!--        <div th:if=${error==invalid} class=" message  alert alert-danger">-->
+<!--            OTP is invalid please enter correct OTP-->
+<!--        </div>-->
+<!--        <div th:if="${error==resend}" class=" message alert alert-success"  >-->
+<!--            your OTP is Re-sent successfully check your email !!-->
+<!--        </div>-->
+<!--        <div th:if="${param.success}" class=" message alert alert-success"  >-->
+<!--            Enter the OTP to complete your Registration ! check your email !!-->
+<!--        </div>-->
+
+
+
+<!--        <form th:action="@{/otp/otpSubmit}" method="post" id="otpForm">-->
+<!--            <input class="input" type="text" id="enteredOtp" name="enteredOtp" placeholder="Enter OTP" required>-->
+<!--            <button id="button" type="submit">Verify OTP</button>-->
+
+
+<!--            <a href="/reSendOtp">re-Send</a>-->
+
+<!--        </form>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <!-- ... (existing meta tags) ... -->
+    <style>
+
+        .commonbody {
+            /* Existing styles ... */
+
+            /* Additional styles */
+            background-color: #f4f4f4; /* Add a background color */
+            padding: 20px; /* Add padding to the container */
+        }
+
+        /* Style input fields */
+        .input {
+            padding: 12px;
+            width: 100%;
+            border: 2px solid #007bff; /* Blue border */
+            border-radius: 10px;
+            background-color: #fff; /* White background */
+            color: #333; /* Text color */
+        }
+
+        /* Style buttons */
+        #button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            padding: 12px;
+            margin-top: 10px;
+            width: 50%;
+        }
+
+        #button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transition: 0.3s;
+        }
+
+        /* Style the "re-Send" link */
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Additional styles for alert messages */
+        .message {
+            text-transform: lowercase;
+            font-size: 15px;
+            font-family: sans-serif;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Customize success and error messages */
+        .alert-danger {
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+
+        .alert-success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container maindiv">
+    <div class="commonbody">
+        <h1 id="maintext">OTP Verification</h1>
+        <p id="subtext">Please enter the OTP sent to your email</p>
+
+        <!-- Alert messages based on your Thymeleaf variables -->
+        <div th:if="${error == 'invalid'}" class="message alert alert-danger">
+            OTP is invalid. Please enter the correct OTP.
+        </div>
+        <div th:if="${error == 'resend'}" class="message alert alert-success">
+            Your OTP has been re-sent successfully. Check your email!
+        </div>
+        <div th:if="${param.success}" class="message alert alert-success">
+            Enter the OTP to complete your registration. Check your email!
+        </div>
+
+        <!-- OTP verification form -->
+        <form th:action="@{/otp/otpSubmit}" method="post" id="otpForm">
+            <input class="input" type="text" id="enteredOtp" name="enteredOtp" placeholder="Enter OTP" required>
+            <button id="button" type="submit" style="background-color: #ff6600; color: #fff;">Verify OTP</button>
+
+
+            <a href="/reSendOtp">Re-Send</a>
+        </form>
+    </div>
+</div>
+
+<!--&lt;!&ndash; Additional content below the OTP verification form &ndash;&gt;-->
+<!--<div class="additional-content">-->
+<!--    <h2>Additional Content Section</h2>-->
+<!--    <p>This is some additional content that you can include below the OTP verification form.</p>-->
+<!--</div>-->
+</body>
+</html>

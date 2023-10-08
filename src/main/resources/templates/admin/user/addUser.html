@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/user/user.css}" />
+    <style>
+        /* Add CSS styles to control label and input layout */
+        .form-group {
+            margin-bottom: 10px; /* Add some vertical spacing between form groups */
+        }
+        .form-group label {
+            display: inline-block; /* Display labels as inline-block elements */
+            width: 100px; /* Adjust the width of labels as needed */
+            text-align: right; /* Align labels to the right for better alignment */
+            margin-right: 10px; /* Add some spacing between labels and input boxes */
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 200px; /* Adjust the width of input fields as needed */
+        }
+    </style>
+</head>
+
+<body>
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/ass">Products</a></li>
+        <li class="write"><a href="/admin/category">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage/manageUser">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>User Management - Add User</h2>
+    </section>
+
+    <section class="panel important">
+        <h2>Add User Details</h2>
+        <form th:action="@{/admin/manage/addUser}" th:method="post"  th:object="${user}">
+            <div class="form-group">
+                <label for="firstName">First Name</label> <!-- Remove the colon from the label -->
+                <input type="text" id="firstName" name="firstName"  th:field="*{firstName}" required />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label> <!-- Remove the colon from the label -->
+                <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Username</label> <!-- Remove the colon from the label -->
+                <input type="email" id="email" name="email" th:field="*{email}" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" id="password" name="password" th:field="*{password}" autocomplete="off" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="update-user-button">Add User</button>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+</body>
+
+</html>

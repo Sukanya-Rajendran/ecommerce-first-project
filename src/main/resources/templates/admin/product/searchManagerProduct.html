@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/user/user.css}" />
+    <style>
+        .add-user-button {
+            float: left; /* Float the button to the left */
+            margin-left: 40px;
+        }
+        .user-table {
+            clear: left; /* Clear the float to ensure proper layout */
+        }
+        /* Style for the buttons */
+button[type="submit"] {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 8px 16px; /* Padding around text */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 5px; /* Add some spacing between buttons */
+}
+
+/* Style for the buttons on hover */
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style for the "Delete" button */
+button[type="submit"].delete-button {
+    background-color: #dc3545; /* Red background color */
+}
+
+/* Style for the "Delete" button on hover */
+button[type="submit"].delete-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Style for the "Update" button */
+button[type="submit"].update-button {
+    background-color: #28a745; /* Green background color */
+}
+
+/* Style for the "Update" button on hover */
+button[type="submit"].update-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+btn-toggle {
+    width: 150px; /* Set the desired fixed width */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 5px; /* Add some spacing between buttons */
+    text-align: center; /* Center the text within the button */
+    display: block;
+}
+
+.btn-toggle-admin {
+    background-color: #28a745; /* Green background color for admin button */
+    color: #fff; /* White text color */
+}
+
+.btn-toggle-user {
+    background-color: #007bff; /* Blue background color for user button */
+    color: #fff; /* White text color */
+}
+
+.btn-toggle-block {
+    background-color: #dc3545; /* Red background color for block/unblock button */
+    color: #fff; /* White text color */
+}
+
+.btn-toggle:hover {
+    opacity: 0.8; /* Reduce opacity on hover for all buttons */
+}
+    </style>
+</head>
+
+<body>
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/product">Products</a></li>
+        <li class="write"><a href="/admin/category">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>User Management - Manage User</h2>
+    </section>
+    <form th:action="@{/product/productSearch}" method="get" class="form-inline">
+        <div class="form-group">
+            <select class="form-control" id="searchType" name="queryType">
+                <option value="productName">First Name</option>
+<!--                <option value="lastName">Last Name</option>-->
+<!--                <option value="email">Email</option>-->
+            </select>
+            <input type="text" class="form-control" id="searchField" name="queryWord" placeholder="Search">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <section class="panel important">
+        <!--        <button onclick="window.location.href='/admin/manage/addUser'" class="add-user-button">Add User</button>-->
+        <div id="loggedInUserId" data-user-id="${loggedInUserId}"></div>
+        <div class="user-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- User data will be dynamically populated here using Thymeleaf -->
+                <tr th:each="product : ${listSearchProductName}">
+                    <td th:text="${product.productName}"></td>
+<!--                    <td th:text="${user.lastName}"></td>-->
+<!--                    <td th:text="${user.email}"></td>-->
+<!--                    <td th:text="${user.blocked ? 'Blocked' : 'Active'}"></td>-->
+<!--                    <td>-->
+<!--                        &lt;!&ndash; Check if the user is not the currently logged-in user &ndash;&gt;-->
+<!--                        <th:block th:unless="${user.id == loggedInUserId}">-->
+<!--                            <form th:action="@{/admin/manage/deleteUser/{id}(id=${user.id})}" method="post">-->
+<!--                                <button type="submit" class="delete-button">Delete</button>-->
+<!--                            </form>-->
+
+<!--                            <form th:action="@{/admin/manage/updateUser/{id}(id=${user.id})}" method="post">-->
+<!--                                <button type="submit" class="update-button">Update</button>-->
+<!--                            </form>-->
+<!--                            <form th:action="@{/admin/manage/toggleBlockUser/{id}(id=${user.id})}" method="post">-->
+<!--                                <button type="submit" class="btn btn-toggle btn-toggle-block" th:if="${user.blocked}">Unblock User</button>-->
+<!--                                <button type="submit" class="btn btn-toggle btn-toggle-block" th:unless="${user.blocked}">Block User</button>-->
+<!--                            </form>-->
+<!--                        </th:block>-->
+<!--                    </td>-->
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+<!-- Inside your JavaScript code -->
+<!--<script th:inline="javascript">-->
+<!--    fetch('/admin/manage/listAllUsers')-->
+<!--        .then(response => response.json())-->
+<!--        .then(data => {-->
+<!--            const userTableBody = document.querySelector('.user-table tbody');-->
+<!--            const loggedInUserId = document.getElementById('loggedInUserId').getAttribute('data-user-id');-->
+
+<!--            data.forEach(user => {-->
+<!--                const row = document.createElement('tr');-->
+<!--                const status = user.blocked ? 'Blocked' : 'Active';-->
+<!--                const isCurrentUser = user.id === loggedInUserId;-->
+
+<!--                row.innerHTML = `-->
+<!--                    <td>${user.firstName}</td>-->
+<!--                    <td>${user.lastName}</td>-->
+<!--                    <td>${user.email}</td>-->
+<!--                    <td>${status}</td>-->
+<!--                    <td>-->
+<!--                        <button class="delete-user-button" data-user-id="${user.id}" ${isCurrentUser ? 'disabled' : ''}>Delete</button>-->
+<!--                        <button class="update-user-button" data-user-id="${user.id}" ${isCurrentUser ? 'disabled' : ''}>Update</button>-->
+<!--                    </td>-->
+<!--                `;-->
+<!--                userTableBody.appendChild(row);-->
+<!--            });-->
+
+<!--            // Add event listeners to the delete buttons-->
+<!--            const deleteButtons = document.querySelectorAll('.delete-user-button');-->
+<!--            deleteButtons.forEach(button => {-->
+<!--                button.addEventListener('click', () => {-->
+<!--                    const userId = button.getAttribute('data-user-id');-->
+<!--                    // Redirect to the delete mapping with the user ID-->
+<!--                    window.location.href = '/admin/manage/deleteUser/' + userId;-->
+<!--                });-->
+<!--            });-->
+
+<!--            // Add event listeners to the update buttons-->
+<!--            const updateButtons = document.querySelectorAll('.update-user-button');-->
+<!--            updateButtons.forEach(button => {-->
+<!--                button.addEventListener('click', () => {-->
+<!--                    const userId = button.getAttribute('data-user-id');-->
+<!--                    // Redirect to the update mapping with the user ID-->
+<!--                    window.location.href = '/admin/manage/updateUser/' + userId;-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!--</script>-->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <style>
+        .warning-box {
+            display: none;
+            position: fixed;
+            opacity: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+            animation-name: register-notify;
+            animation-delay: 500ms;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.56, 1.38);
+            animation-duration: 2700ms;
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 16px; /* Padding */
+        }
+
+        .alert h1 {
+            font-size: 24px; /* Increase font size */
+            margin-bottom: 12px; /* Add spacing below the text */
+        }
+
+        @keyframes register-notify {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            40% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            60% {
+                opacity: 1;
+            }
+            99% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="warning-box">
+    <div class="alert alert-success" role="alert">
+        <h1>Your Order Placed Successfully!</h1>
+        <p>Thank you for join with Tedx Watches . We're Happy to be the part of Your shopping .</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".warning-box").css({"display": "block"});
+    });
+</script>
+</body>
+</html>

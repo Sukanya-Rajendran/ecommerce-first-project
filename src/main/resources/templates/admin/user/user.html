@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/admin/user/user.css}" />
+    <style>
+        .box-container {
+        margin-top: 100px; /* Adjust the margin as needed to move the .box-container down */
+        margin-bottom: 150px;
+            }
+    </style>
+</head>
+
+<body>
+
+<header role="banner">
+    <h1>Admin Panel</h1>
+    <ul class="utilities">
+        <br>
+        <li class="users"><a href="/manageAccount">My Account</a></li>
+        <li class="logout warn"><a href="/logout">Log Out</a></li>
+    </ul>
+</header>
+
+<nav role='navigation'>
+    <ul class="main">
+        <li class="dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="edit"><a href="/product">Products</a></li>
+        <li class="write"><a href="/admin/category">Category</a></li>
+        <li class="comments"><a href="/admin/inventory">Inventory</a></li>
+        <li class="users"><a href="/admin/manage/manageUser">User Management</a></li>
+    </ul>
+</nav>
+
+<main role="main">
+
+    <section class="panel important">
+        <h2>User Management</h2>
+    </section>
+
+    <section class="panel important">
+        <!-- Replace this section with clickable boxes -->
+        <div class="box-container">
+            <div class="box">
+                <a href="/admin/manage/listUser">Search Users</a>
+            </div>
+            <div class="box">
+                <a href="/admin/manage/manageUser">Manage Users</a>
+            </div>
+            <div class="box">
+                <a href="/admin/manage/adminSettings">Accessibility</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+</body>
+
+</html>
